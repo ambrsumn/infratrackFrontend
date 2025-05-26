@@ -5,7 +5,7 @@ import { OrbitControls, useGLTF } from '@react-three/drei';
 
 function BuildingModel() {
   const { scene } = useGLTF('/models/building.glb');
-  return <primitive object={scene} scale={.012} />;
+  return <primitive object={scene} scale={.4} />;
 }
 
 export default function BuildingHome() {
