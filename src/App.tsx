@@ -9,30 +9,35 @@ import { useUserContext } from './Context/UserContext';
 import SidebarMinimal from './Components/SidebarMinimal';
 import LoginPage from './Components/LoginPage';
 import RegisterPage from './Components/RegisterPage';
+import OrderPage from './Components/OrderPage';
+import ProfilePage from './Components/ProfilePage';
 
 function App() {
 
   const [currentTab, setCurrentTab] = useState("Home");
-  const [logginId, setLogginId] = useState(false);
-  const { user } = useUserContext();
+  const [logginId, setLogginId] = useState(true);
+  const user = localStorage.getItem('userDetails');
 
   useEffect(() => {
-    console.log(currentTab);
-    console.log(user);
 
-    if (user && user.email !== '') {
-      setLogginId(true);
-      setCurrentTab("Home");
+    if (user) {
+      let userDetails = JSON.parse(user);
+
+      if (userDetails.email !== '') {
+        console.log(user);
+        setLogginId(true);
+        setCurrentTab("Home");
+      }
     }
+
     else {
-      console.log("not logged in");
       setLogginId(false);
       setCurrentTab("Login");
     }
   }, [])
 
   const getSelectedTab = (tabName: string) => {
-    console.log(tabName);
+    //console.log(tabName);
     setCurrentTab(tabName);
   }
 
@@ -68,11 +73,11 @@ function App() {
           }
 
           {currentTab === 'Orders' &&
-            <Home />
+            <OrderPage />
           }
 
           {currentTab === 'Settings' &&
-            <Home />
+            <ProfilePage />
           }
 
           {currentTab === 'Login' &&
@@ -80,7 +85,7 @@ function App() {
           }
 
           {currentTab === 'Register' &&
-            <RegisterPage />
+            <RegisterPage getSelectedTab={getSelectedTab} />
           }
         </div>
 

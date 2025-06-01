@@ -12,10 +12,10 @@ function LoginPage() {
 
 
     const seePassword = () => {
-        console.log("clicked");
+        //console.log("clicked");
         let ele: any = document.getElementById('password');
         if (ele) {
-            console.log(ele.type);
+            //console.log(ele.type);
             ele.type = ele.type === 'password' ? 'text' : 'password';
 
             setShowPassword(!showPassword);
@@ -24,7 +24,7 @@ function LoginPage() {
     }
 
     const login = () => {
-        console.log("clicked");
+        //console.log("clicked");
     }
 
 

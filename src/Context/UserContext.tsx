@@ -12,9 +12,9 @@ interface UserContextProps {
 const UserContext = createContext<UserContextProps>({
     host: '',
     setHost: () => { },
-    apiToken: '',
+    apiToken: localStorage.getItem('token') || '',
     saveToken: () => { },
-    user: null,
+    user: JSON.parse(localStorage.getItem('userDetails') || '{}'),
     saveUser: () => { },
 });
 
